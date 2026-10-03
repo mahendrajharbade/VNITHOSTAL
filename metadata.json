@@ -1,0 +1,8 @@
+{
+  "name": "VNIT College Hostel Student Record Management System",
+  "description": "Secure, responsive web application for managing VNIT college hostel student records, allocations, reporting, and administration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
