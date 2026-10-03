@@ -1,12 +1,8 @@
 import express from 'express';
-import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import authRoutes from './server/routes/auth.routes.js';
-import studentsRoutes from './server/routes/students.routes.js';
-import hostelsRoutes from './server/routes/hostels.routes.js';
-import dashboardRoutes from './server/routes/dashboard.routes.js';
+import { createExpressApp } from './server/app.js';
 
 dotenv.config();
 
@@ -14,45 +10,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function startServer() {
-  const app = express();
+  const app = createExpressApp();
   const PORT = Number(process.env.PORT) || 3000;
-
-  // Middleware
-  app.use(cors({
-    origin: process.env.ALLOWED_ORIGIN ? process.env.ALLOWED_ORIGIN.split(',') : '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  }));
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
-
-  // Request logger for API calls
-  app.use('/api', (req, res, next) => {
-    const start = Date.now();
-    res.on('finish', () => {
-      const duration = Date.now() - start;
-      if (process.env.NODE_ENV !== 'production') {
-        console.log(`[API] ${req.method} ${req.originalUrl} ${res.statusCode} (${duration}ms)`);
-      }
-    });
-    next();
-  });
-
-  // API Routes
-  app.use('/api/auth', authRoutes);
-  app.use('/api/students', studentsRoutes);
-  app.use('/api/hostels', hostelsRoutes);
-  app.use('/api/dashboard', dashboardRoutes);
-  app.use('/api', dashboardRoutes); // mounts /api/reports and /api/system
-
-  // Health check endpoint
-  app.get('/api/health', (req, res) => {
-    res.json({
-      status: 'healthy',
-      service: 'VNIT Hostel Management System API',
-      timestamp: new Date().toISOString(),
-    });
-  });
 
   // Frontend integration (Dev Vite Middleware vs Prod static files)
   const isProd = process.env.NODE_ENV === 'production';

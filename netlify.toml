@@ -8,10 +8,18 @@
   
   # Directory containing static output files to publish
   publish = "dist"
+  
+  # Directory containing Netlify serverless backend functions
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
+
+[functions]
+  # Use esbuild to bundle the Express backend for Netlify serverless execution
+  node_bundler = "esbuild"
+  included_files = ["database/**"]
 
 # Security & Cache Control Headers
 [[headers]]
@@ -29,19 +37,19 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 # ----------------------------------------------------------------------------
-# Optional: Netlify API Proxying to external backend (Render / Railway / Cloud)
-# If you don't use VITE_API_URL, uncomment the following block to route all
-# /api/* requests directly through Netlify without CORS:
-#
-# [[redirects]]
-#   from = "/api/*"
-#   to = "https://YOUR_BACKEND_URL.railway.app/api/:splat"
-#   status = 200
-#   force = true
+# 1. API Route Proxying to Netlify Serverless Function
+# Routes all /api/* requests directly into the backend Express function
 # ----------------------------------------------------------------------------
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
 
-# Single Page Application (SPA) Client Routing
-# Redirects all browser requests to index.html so React router can handle client paths
+# ----------------------------------------------------------------------------
+# 2. Single Page Application (SPA) Client Routing
+# Redirects all frontend navigation to index.html so React handles client paths
+# ----------------------------------------------------------------------------
 [[redirects]]
   from = "/*"
   to = "/index.html"
