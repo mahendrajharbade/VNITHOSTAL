@@ -19,8 +19,8 @@ import {
 
 interface AddStudentPageProps {
   onNavigate: (page: ActivePage) => void;
-  editStudentId?: number | null;
-  onStudentSaved?: (studentId: number) => void;
+  editStudentId?: number | string | null;
+  onStudentSaved?: (studentId: number | string) => void;
 }
 
 const VNIT_BRANCHES = [

@@ -482,7 +482,7 @@ class ClientFallbackStore {
     const cleanUser = username.trim().toLowerCase();
     if (
       (cleanUser === 'admin' || cleanUser === 'admin@vnit.ac.in') &&
-      (pass === 'Admin@vnit2026' || pass === 'admin')
+      (pass === 'Jaymaatapti' || pass === 'Admin@vnit2026')
     ) {
       const token = 'vnit_fallback_jwt_demo_' + Date.now();
       return {

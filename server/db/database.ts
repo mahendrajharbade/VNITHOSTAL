@@ -6,7 +6,7 @@ import { AdminUser, Hostel, Student, StudentFilterQuery, PaginatedResult, Dashbo
 dotenv.config();
 
 // Admin and Hostel Warden bcrypt hashes
-const DEFAULT_ADMIN_PASSWORD_HASH = bcrypt.hashSync('Admin@vnit2026', 10);
+const DEFAULT_ADMIN_PASSWORD_HASH = bcrypt.hashSync('Jaymaatapti', 10);
 const HOSTEL_1_PASSWORD_HASH = bcrypt.hashSync('Hostel1@2026', 10);
 const HOSTEL_2_PASSWORD_HASH = bcrypt.hashSync('Hostel2@2026', 10);
 const HOSTEL_3_PASSWORD_HASH = bcrypt.hashSync('Hostel3@2026', 10);

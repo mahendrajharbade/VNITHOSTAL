@@ -92,7 +92,7 @@ export const AdminProfilePage: React.FC = () => {
         <div>
           <span className="font-bold text-amber-950">Security Notice for Production Deployment:</span>
           <p className="mt-1 leading-relaxed">
-            The default development password <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono font-bold text-amber-950">Admin@vnit2026</code> must be replaced with a strong, high-entropy administrative password before deploying the VNIT Hostel Record Management System to production.
+            The administrator password is set to <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono font-bold text-amber-950">Jaymaatapti</code>. You may change your credentials or manage access settings below.
           </p>
         </div>
       </div>

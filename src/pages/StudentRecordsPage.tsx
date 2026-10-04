@@ -22,8 +22,8 @@ import {
 
 interface StudentRecordsPageProps {
   onNavigate: (page: ActivePage) => void;
-  onSelectStudent: (studentId: number) => void;
-  onEditStudent: (studentId: number) => void;
+  onSelectStudent: (studentId: number | string) => void;
+  onEditStudent: (studentId: number | string) => void;
 }
 
 const BRANCH_OPTIONS = [

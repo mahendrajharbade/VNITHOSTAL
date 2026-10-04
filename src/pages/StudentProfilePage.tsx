@@ -22,9 +22,9 @@ import {
 } from 'lucide-react';
 
 interface StudentProfilePageProps {
-  studentId: number;
+  studentId: number | string;
   onNavigate: (page: ActivePage) => void;
-  onEditStudent: (studentId: number) => void;
+  onEditStudent: (studentId: number | string) => void;
 }
 
 export const StudentProfilePage: React.FC<StudentProfilePageProps> = ({

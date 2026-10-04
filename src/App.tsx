@@ -18,8 +18,8 @@ const AppContent: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth();
   const [currentPage, setCurrentPage] = useState<ActivePage>('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedStudentId, setSelectedStudentId] = useState<number | null>(null);
-  const [editStudentId, setEditStudentId] = useState<number | null>(null);
+  const [selectedStudentId, setSelectedStudentId] = useState<number | string | null>(null);
+  const [editStudentId, setEditStudentId] = useState<number | string | null>(null);
 
   // Keyboard shortcut: Cmd+K / Ctrl+K opens quick search
   useEffect(() => {
@@ -61,19 +61,19 @@ const AppContent: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSelectStudent = (studentId: number) => {
+  const handleSelectStudent = (studentId: number | string) => {
     setSelectedStudentId(studentId);
     setCurrentPage('student-profile');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleEditStudent = (studentId: number) => {
+  const handleEditStudent = (studentId: number | string) => {
     setEditStudentId(studentId);
     setCurrentPage('add-student');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleFilterByHostel = (hostelId: number) => {
+  const handleFilterByHostel = (hostelId: number | string) => {
     setCurrentPage('student-records');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

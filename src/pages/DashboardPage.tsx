@@ -19,7 +19,7 @@ import {
 
 interface DashboardPageProps {
   onNavigate: (page: ActivePage) => void;
-  onSelectStudent: (studentId: number) => void;
+  onSelectStudent: (studentId: number | string) => void;
 }
 
 export const DashboardPage: React.FC<DashboardPageProps> = ({

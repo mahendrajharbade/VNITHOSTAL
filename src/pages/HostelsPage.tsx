@@ -19,7 +19,7 @@ import {
 
 interface HostelsPageProps {
   onNavigate: (page: ActivePage) => void;
-  onFilterByHostel: (hostelId: number) => void;
+  onFilterByHostel: (hostelId: number | string) => void;
 }
 
 export const HostelsPage: React.FC<HostelsPageProps> = ({

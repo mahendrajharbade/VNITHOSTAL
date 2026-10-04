@@ -17,7 +17,7 @@ import {
 
 interface SearchStudentPageProps {
   onNavigate: (page: ActivePage) => void;
-  onSelectStudent: (studentId: number) => void;
+  onSelectStudent: (studentId: number | string) => void;
 }
 
 export const SearchStudentPage: React.FC<SearchStudentPageProps> = ({

@@ -1,16 +1,16 @@
 export interface AdminUser {
-  id: number;
+  id: number | string;
   username: string;
   email: string;
   full_name: string;
   role: string;
-  hostel_id?: number | null;
+  hostel_id?: number | string | null;
   hostel_name?: string;
   last_login?: string | null;
 }
 
 export interface Hostel {
-  id: number;
+  id: number | string;
   code: string;
   name: string;
   type: 'Boys' | 'Girls' | 'Co-ed';
@@ -25,7 +25,7 @@ export interface Hostel {
 }
 
 export interface Student {
-  id: number;
+  id: number | string;
   roll_number: string;
   full_name: string;
   father_name: string;
@@ -37,7 +37,7 @@ export interface Student {
   course: string;
   branch: string;
   year_semester: string;
-  hostel_id: number;
+  hostel_id: number | string;
   hostel_name?: string;
   hostel_code?: string;
   room_number: string;
@@ -65,7 +65,7 @@ export interface StudentFormData {
   course: string;
   branch: string;
   year_semester: string;
-  hostel_id: number;
+  hostel_id: number | string;
   room_number: string;
   admission_date: string;
   address: string;
@@ -81,7 +81,7 @@ export interface DashboardStats {
   activeStudents: number;
   inactiveStudents: number;
   hostelStats: Array<{
-    id: number;
+    id: number | string;
     code: string;
     name: string;
     type: string;
@@ -105,7 +105,7 @@ export interface Pagination {
 }
 
 export interface SystemStatus {
-  mode: 'mysql' | 'relational_engine';
+  mode: 'mysql' | 'relational_engine' | 'supabase_cloud';
   connectedToMySQL: boolean;
   message: string;
   config: {
